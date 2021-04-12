@@ -1,5 +1,5 @@
 {% set name = "jupyter-jaeger" %}
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name | replace("-", "_") }}/{{ name | replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: c49006760f2eb63689af195c64f066ab8d1ec1dee882f5868a05804e38a20e03
+  sha256: 46628417163b28e67298af0f782d00e2f5e8d106a94785cca4cd454abc70e73d
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -34,7 +34,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Jupyter integration for Jaeger tracing'
+  summary: Jupyter integration for Jaeger tracing
 
 extra:
   recipe-maintainers:
