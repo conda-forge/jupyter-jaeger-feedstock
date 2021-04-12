@@ -17,7 +17,7 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.7
     - pip
     - jupyter-packaging 0.7.9
     - jupyterlab 3.*
@@ -26,7 +26,7 @@ requirements:
     - yarn
     - wheel
   run:
-    - python
+    - python >=3.7
     - jaeger <{{ jaeger_version }}
     - jaeger-agent <{{ jaeger_version }}
     - jaeger-all-in-one <{{ jaeger_version }}
