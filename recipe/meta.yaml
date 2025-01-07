@@ -7,17 +7,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name | replace("-", "_") }}/{{ name | replace("-", "_") }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name | replace("-", "_") }}/{{ name | replace("-", "_") }}-{{ version }}.tar.gz
   sha256: 46628417163b28e67298af0f782d00e2f5e8d106a94785cca4cd454abc70e73d
 
 build:
   noarch: python
-  number: 0
-  script: "{{ PYTHON }} -m pip install --no-deps . -vv"
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - jupyter-packaging 0.7.9
     - jupyterlab 3.*
@@ -26,7 +26,7 @@ requirements:
     - yarn
     - wheel
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - jaeger <{{ jaeger_version }}
     - jaeger-agent <{{ jaeger_version }}
     - jaeger-all-in-one <{{ jaeger_version }}
@@ -40,6 +40,8 @@ requirements:
     - notebook
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - jupyter_jaeger
 
